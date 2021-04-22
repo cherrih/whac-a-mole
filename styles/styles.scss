@@ -78,5 +78,56 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
+    pointer-events: none;
+    z-index: 1;
   }
+
+  &__alien {
+    position: absolute;
+    opacity: 0.3;
+
+    &#alien1 {
+      left: 56vh;
+      top: 20vh;
+      .moon__alien--crater {
+        height: 8vh;
+      }
+    }
+    &#alien2 {
+      left: 90vh;
+      top: 14vh;
+      .moon__alien--crater {
+        height: 9vh;
+      }
+    }
+    &#alien3 {
+      left: 131vh;
+      top: 23vh;
+      .moon__alien--crater {
+        height: 15vh;
+      }
+    }
+    &#alien4 {
+      left: 47vh;
+      top: 44vh;
+      .moon__alien--crater {
+        height: 22vh;
+      }
+    }
+    &#alien5 {
+      left: 75vh;
+      top: 30vh;
+      .moon__alien--crater {
+        height: 18vh;
+      }
+    }
+    &#alien6 {
+      left: 107vh;
+      top: 43vh;
+      .moon__alien--crater {
+        height: 26vh;
+      }
+    }
+  }
+
 }

@@ -24,7 +24,7 @@ const getStar = () => {
 };
 
 const generateStars = () => {
-  for (let i = 0; i < 32; i++) {
+  for (let i = 0; i < 64; i++) {
     sky.appendChild(getStar());
   }
 };
