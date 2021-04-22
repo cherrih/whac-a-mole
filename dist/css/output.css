@@ -1,3 +1,44 @@
+@keyframes comet1 {
+  0% {
+    transform: translateX(60vw) translateY(30vh);
+  }
+  100% {
+    transform: translateX(-66vw) translateY(-100vh);
+  }
+}
+@keyframes comet2 {
+  0% {
+    transform: translateX(-40vw) translateY(-20vh);
+  }
+  100% {
+    transform: translateX(166vw) translateY(100vh);
+  }
+}
+@keyframes sunshine {
+  0% {
+    width: 238px;
+    height: 238px;
+  }
+  50% {
+    width: 268px;
+    height: 268px;
+  }
+  100% {
+    width: 238px;
+    height: 238px;
+  }
+}
+@keyframes twinkle {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -28,16 +69,35 @@ html, body {
   transform: rotate(45deg);
 }
 
-@keyframes twinkle {
-  0% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.4;
-  }
+.comet1 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  animation: comet1 6s infinite;
+}
+
+.comet2 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  animation: comet2 15s infinite 1s;
+}
+
+.star {
+  animation: twinkle infinite;
+  background-color: #fff;
+  position: fixed;
+  transform: rotate(45deg);
+}
+
+.sun {
+  animation: sunshine 16s infinite;
+  position: fixed;
+  width: 238px;
+  height: 238px;
+  right: -114px;
+  top: -114px;
+  background: radial-gradient(50% 50% at 50% 50%, #f26e0e 0%, rgba(196, 196, 196, 0) 100%);
 }
 
 /*# sourceMappingURL=output.css.map */

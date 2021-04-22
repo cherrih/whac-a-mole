@@ -1,0 +1,46 @@
+@keyframes comet1 {
+  0% {
+    transform: translateX(60vw) translateY(30vh);
+  }
+
+  100% {
+    transform: translateX(-66vw) translateY(-100vh);
+  }
+}
+
+@keyframes comet2 {
+  0% {
+    transform: translateX(-40vw) translateY(-20vh);
+  }
+
+  100% {
+    transform: translateX(166vw) translateY(100vh);
+  }
+}
+
+@keyframes sunshine {
+  0% {
+    width: 238px;
+    height: 238px;
+  }
+  50% {
+    width: 268px;
+    height: 268px;
+  }
+  100% {
+    width: 238px;
+    height: 238px;
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
