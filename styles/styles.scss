@@ -1,0 +1,36 @@
+// utils
+@import 'utils/resets';
+@import 'utils/variables';
+
+html, body {
+  margin: 0;
+  background-color: $color--dark;
+  color: $color--light;
+}
+
+.sky {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  &__star {
+    animation: twinkle infinite;
+    background-color: #fff;
+    position: fixed;
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
