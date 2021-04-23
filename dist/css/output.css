@@ -1,3 +1,13 @@
+@keyframes animate-type {
+  0% {
+    font-variation-settings: "wght" 400;
+    letter-spacing: 0;
+  }
+  100% {
+    font-variation-settings: "wght" 900;
+    letter-spacing: 2%;
+  }
+}
 @keyframes comet1 {
   0% {
     transform: translateX(60vw) translateY(30vh);
@@ -40,10 +50,17 @@
     opacity: 0.4;
   }
 }
+@font-face {
+  font-family: "GarconneDisplayV";
+  src: url("/fonts/GarconneDisplayVariable.ttf") format("truetype"), url("/fonts/GarconneDisplayExtraGras.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
 * {
   margin: 0;
   padding: 0;
   font-family: Helvetica, sans-serif;
+  font-weight: normal;
 }
 
 html, body {
@@ -58,6 +75,64 @@ button {
 html, body {
   margin: 0;
   background-color: #111111;
+  color: #FFFFFF;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+header {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  padding: 16px;
+}
+@media screen and (min-device-width: 769px) {
+  header {
+    padding: 24px;
+  }
+}
+@media screen and (min-device-width: 1201px) {
+  header {
+    padding: 40px;
+  }
+}
+header div {
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+header div.header__block--visible {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+header div h2 {
+  font-family: GarconneDisplayV;
+  font-size: 24px;
+}
+@media screen and (min-device-width: 769px) {
+  header div h2 {
+    font-size: 40px;
+  }
+}
+
+.splash--text h1 {
+  font-family: GarconneDisplayV;
+  animation: animate-type 3s infinite alternate;
+}
+.splash--text #start {
+  background-color: #000363;
+  width: 120px;
+  height: 60px;
+  border-radius: 40px;
+  position: fixed;
+  right: 100px;
+  bottom: 50vh;
   color: #FFFFFF;
 }
 
@@ -221,14 +296,6 @@ html, body {
   top: -27%;
   left: 35%;
   height: 21vh;
-}
-
-#start {
-  background-color: purple;
-  width: 100px;
-  height: 100px;
-  position: fixed;
-  font-family: "BandeinsStrangeV";
 }
 
 /*# sourceMappingURL=output.css.map */

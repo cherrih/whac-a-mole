@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="src/assets/favicon.png">
     <link rel="stylesheet" href="dist/css/output.css">
-    <title>Whac-a-mole</title>
+    <title>Whac-an-alien</title>
   </head>
   <body>
     <noscript>
@@ -15,7 +15,24 @@
     <div id="app">
       <div id="sky--background" class="sky"></div>
       <div class="sun"></div>
-      <button id="start">Start game</button>
+      <header>
+        <div id="high-score">
+          <h2></h2>
+          <h3>HIGH SCORE</h3>
+        </div>
+        <div id="score">
+          <h2>0</h2>
+          <h3>POINTS</h3>
+        </div>
+        <div id="countdown">
+          <h2></h2>
+          <h3>SECONDS</h3>
+        </div>
+      </header>
+      <div class="splash--text">
+        <h1>WHAC-AN-ALIEN</h1>
+        <button id="start">PLAY</button>
+      </div>
       <svg
         class="comet1"
         width="155"

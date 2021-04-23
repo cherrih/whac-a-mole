@@ -1,3 +1,11 @@
+const startButton = document.getElementById("start");
+const highScoreCont = document.getElementById("high-score");
+const highScoreText = highScoreCont.querySelector("h2");
+const scoreCont = document.getElementById("score");
+const scoreText = scoreCont.querySelector("h2");
+const countdownCont = document.getElementById("countdown");
+const countdownText = countdownCont.querySelector("h2");
+
 const getAliens = () => (
   window.innerWidth > window.innerHeight
   ? [...document.getElementsByClassName("moon__alien")]
@@ -5,7 +13,6 @@ const getAliens = () => (
 );
 
 let aliens = getAliens();
-const startButton = document.getElementById("start");
 
 const activeTimes = [
   {
@@ -39,7 +46,21 @@ let currentActive;
 let timeRemaining = 30;
 let score = 0;
 let highScore = 0;
+
 const activeClass = "moon__alien--active";
+const visibleClass = "header__block--visible";
+
+const handleGameOver = () => {
+  if (score > highScore) {
+    highScore = score;
+  }
+  if (highScore != 0) {
+    highScoreText.innerText = highScore;
+    highScoreCont.classList.add(visibleClass);
+  }
+  scoreCont.classList.remove(visibleClass);
+  countdownCont.classList.remove(visibleClass);
+}
 
 const getRandomAlien = () => {
   const alien = aliens[getRandomNum(0, aliens.length - 1)];
@@ -66,25 +87,33 @@ const updateTimer = () => {
   setTimeout(() => {
     if (timeRemaining != 0) {
       timeRemaining -= 1;
+      countdownText.innerText = timeRemaining;
       updateTimer();
     } else {
       isGameOver = true;
-      timeRemaining = 30;
+      handleGameOver();
     }
   }, 1000);
 }
 
 const startGame = () => {
+  score = 0;
+  scoreText.innerText = score;
+  timeRemaining = 30;
+  countdownText.innerText = timeRemaining;
   isGameOver = false;
+  scoreCont.classList.add(visibleClass);
+  countdownCont.classList.add(visibleClass);
   activateAlien();
   updateTimer();
 }
 
 aliens.forEach((alien) => {
   alien.addEventListener("click", () => {
-    if (alien == currentActive && !isGameOver) {
+    if (alien.classList.contains(activeClass) && !isGameOver) {
       alien.classList.remove(activeClass);
-      score += 20;
+      score += 9;
+      scoreText.innerText = score;
     }
   })
 });

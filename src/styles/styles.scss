@@ -1,5 +1,6 @@
 // utils
 @import 'utils/animations';
+@import 'utils/fonts';
 @import 'utils/resets';
 @import 'utils/variables';
 
@@ -7,7 +8,64 @@ html, body {
   margin: 0;
   background-color: $color--dark;
   color: $color--light;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
+
+header {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  padding: $padding-s;
+  @media screen and (min-device-width: $medium) {
+    padding: $padding-m;
+  }
+  @media screen and (min-device-width: $large) {
+    padding: $padding-l;
+  }
+
+  div {
+    opacity: 0;
+    transition: opacity 0.2s;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    &.header__block--visible {
+      opacity: 1;
+      transition: opacity 0.2s;
+    }
+    h2 {
+      font-family: GarconneDisplayV;
+      font-size: $padding-m;
+      @media screen and (min-device-width: $medium) {
+        font-size: $padding-l;
+      }
+    }
+  }
+}
+
+.splash--text {
+  h1 {
+    font-family: GarconneDisplayV;
+    animation: animate-type 3s infinite alternate;
+  }
+  #start {
+    background-color: $color--main-blue;
+    width: 120px;
+    height: 60px;
+    border-radius: 40px;
+    position: fixed;
+    right: 100px;
+    bottom: 50vh;
+    color: $color--light;
+  }
+}
+
 
 .sky {
   width: 100vw;
@@ -181,13 +239,4 @@ html, body {
     }
   }
 
-}
-
-
-#start {
-  background-color: purple;
-  width: 100px;
-  height: 100px;
-  position: fixed;
-  font-family: 'BandeinsStrangeV';
 }
