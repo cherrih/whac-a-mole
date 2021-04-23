@@ -129,6 +129,14 @@ header {
   animation: comet2 15s infinite 1s;
 }
 
+.constellation {
+  position: fixed;
+  top: 14vh;
+  left: 14vw;
+  animation: constellation 30s infinite;
+  z-index: 1;
+}
+
 .star {
   animation: twinkle infinite;
   background-color: #fff;

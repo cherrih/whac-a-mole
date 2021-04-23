@@ -28,6 +28,16 @@
   }
 }
 
+@keyframes constellation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes sunrise {
   0% {
     top: -8vh;
