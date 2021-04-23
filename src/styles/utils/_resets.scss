@@ -12,4 +12,7 @@ html, body {
 button {
   background: transparent;
   border: none;
+  &:focus {
+    outline: 0;
+  }
 }
