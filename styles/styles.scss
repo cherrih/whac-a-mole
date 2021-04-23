@@ -12,7 +12,7 @@ html, body {
 .sky {
   width: 100vw;
   height: 100vh;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
 
@@ -49,10 +49,10 @@ html, body {
 .sun {
   animation: sunshine 16s infinite;
   position: fixed;
-  width: 238px;
-  height: 238px;
-  right: -114px;
-  top: -114px;
+  width: 20vh;
+  height: 20vh;
+  right: -8vh;
+  top: -8vh;
   background: radial-gradient(
     50% 50% at 50% 50%,
     #f26e0e 0%,
@@ -85,6 +85,26 @@ html, body {
   &__alien {
     position: absolute;
     opacity: 0.3;
+    transition: opacity 0.2s;
+
+    &--active {
+      opacity: 1;
+      transition: opacity 0.2s;
+      .moon__alien--et {
+        opacity: 1;
+        transition: opacity 0.3s;
+      }
+    }
+
+    &:hover {
+      z-index: 1;
+    }
+
+    &--et {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.1s;
+    }
 
     &#alien1 {
       left: 56vh;
@@ -92,12 +112,23 @@ html, body {
       .moon__alien--crater {
         height: 8vh;
       }
+      .moon__alien--et {
+        right: 23%;
+        top: -67%;
+        height: 12vh;
+      }
     }
     &#alien2 {
       left: 90vh;
-      top: 14vh;
+      top: 12vh;
       .moon__alien--crater {
         height: 9vh;
+      }
+      .moon__alien--et {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 50%;
+        height: 13vh;
       }
     }
     &#alien3 {
@@ -106,12 +137,22 @@ html, body {
       .moon__alien--crater {
         height: 15vh;
       }
+      .moon__alien--et {
+        top: -48%;
+        left: 23%;
+        height: 18vh;
+      }
     }
     &#alien4 {
       left: 47vh;
       top: 44vh;
       .moon__alien--crater {
         height: 22vh;
+      }
+      .moon__alien--et {
+        top: -27%;
+        left: -44%;
+        height: 20vh;
       }
     }
     &#alien5 {
@@ -120,6 +161,11 @@ html, body {
       .moon__alien--crater {
         height: 18vh;
       }
+      .moon__alien--et {
+        top: -44%;
+        left: -20%;
+        height: 21vh;
+      }
     }
     &#alien6 {
       left: 107vh;
@@ -127,7 +173,21 @@ html, body {
       .moon__alien--crater {
         height: 26vh;
       }
+      .moon__alien--et {
+        top: -27%;
+        left: 35%;
+        height: 21vh;
+      }
     }
   }
 
+}
+
+
+#start {
+  background-color: purple;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  font-family: 'BandeinsStrangeV';
 }

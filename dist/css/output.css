@@ -17,16 +17,16 @@
 }
 @keyframes sunshine {
   0% {
-    width: 238px;
-    height: 238px;
+    width: 20vh;
+    height: 20vh;
   }
   50% {
-    width: 268px;
-    height: 268px;
+    width: 24vh;
+    height: 24vh;
   }
   100% {
-    width: 238px;
-    height: 238px;
+    width: 20vh;
+    height: 20vh;
   }
 }
 @keyframes twinkle {
@@ -43,6 +43,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: Helvetica, sans-serif;
 }
 
 html, body {
@@ -63,7 +64,7 @@ html, body {
 .sky {
   width: 100vw;
   height: 100vh;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
 }
@@ -99,10 +100,10 @@ html, body {
 .sun {
   animation: sunshine 16s infinite;
   position: fixed;
-  width: 238px;
-  height: 238px;
-  right: -114px;
-  top: -114px;
+  width: 20vh;
+  height: 20vh;
+  right: -8vh;
+  top: -8vh;
   background: radial-gradient(50% 50% at 50% 50%, #f26e0e 0%, rgba(196, 196, 196, 0) 100%);
 }
 
@@ -130,6 +131,23 @@ html, body {
 .moon__alien {
   position: absolute;
   opacity: 0.3;
+  transition: opacity 0.2s;
+}
+.moon__alien--active {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+.moon__alien--active .moon__alien--et {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.moon__alien:hover {
+  z-index: 1;
+}
+.moon__alien--et {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.1s;
 }
 .moon__alien#alien1 {
   left: 56vh;
@@ -138,12 +156,23 @@ html, body {
 .moon__alien#alien1 .moon__alien--crater {
   height: 8vh;
 }
+.moon__alien#alien1 .moon__alien--et {
+  right: 23%;
+  top: -67%;
+  height: 12vh;
+}
 .moon__alien#alien2 {
   left: 90vh;
-  top: 14vh;
+  top: 12vh;
 }
 .moon__alien#alien2 .moon__alien--crater {
   height: 9vh;
+}
+.moon__alien#alien2 .moon__alien--et {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 50%;
+  height: 13vh;
 }
 .moon__alien#alien3 {
   left: 131vh;
@@ -152,12 +181,22 @@ html, body {
 .moon__alien#alien3 .moon__alien--crater {
   height: 15vh;
 }
+.moon__alien#alien3 .moon__alien--et {
+  top: -48%;
+  left: 23%;
+  height: 18vh;
+}
 .moon__alien#alien4 {
   left: 47vh;
   top: 44vh;
 }
 .moon__alien#alien4 .moon__alien--crater {
   height: 22vh;
+}
+.moon__alien#alien4 .moon__alien--et {
+  top: -27%;
+  left: -44%;
+  height: 20vh;
 }
 .moon__alien#alien5 {
   left: 75vh;
@@ -166,12 +205,30 @@ html, body {
 .moon__alien#alien5 .moon__alien--crater {
   height: 18vh;
 }
+.moon__alien#alien5 .moon__alien--et {
+  top: -44%;
+  left: -20%;
+  height: 21vh;
+}
 .moon__alien#alien6 {
   left: 107vh;
   top: 43vh;
 }
 .moon__alien#alien6 .moon__alien--crater {
   height: 26vh;
+}
+.moon__alien#alien6 .moon__alien--et {
+  top: -27%;
+  left: 35%;
+  height: 21vh;
+}
+
+#start {
+  background-color: purple;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  font-family: "BandeinsStrangeV";
 }
 
 /*# sourceMappingURL=output.css.map */
