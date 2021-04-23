@@ -1,11 +1,9 @@
 @keyframes animate-type {
   0% {
-    font-variation-settings: "wght" 400;
-    letter-spacing: 0;
+    font-variation-settings: "wght" 300;
   }
   100% {
-    font-variation-settings: "wght" 900;
-    letter-spacing: 2%;
+    font-variation-settings: "wght" 800;
   }
 }
 @keyframes comet1 {
@@ -25,18 +23,24 @@
     transform: translateX(166vw) translateY(100vh);
   }
 }
-@keyframes sunshine {
+@keyframes sunrise {
   0% {
-    width: 20vh;
-    height: 20vh;
-  }
-  50% {
-    width: 24vh;
-    height: 24vh;
+    top: -8vh;
   }
   100% {
-    width: 20vh;
-    height: 20vh;
+    left: 50%;
+    transform: translate(-50%, 28vh);
+  }
+}
+@keyframes sunshine {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 @keyframes twinkle {
@@ -52,9 +56,11 @@
 }
 @font-face {
   font-family: "GarconneDisplayV";
-  src: url("/fonts/GarconneDisplayVariable.ttf") format("truetype"), url("/fonts/GarconneDisplayExtraGras.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
+  src: url("../fonts/GarconneDisplayVariable.ttf") format("truetype"), url("../fonts/GarconneDisplayExtraGras.otf") format("opentype");
+}
+@font-face {
+  font-family: "BandeinsStrangeV";
+  src: url("../fonts/BandeinsStrangeVariable.ttf") format("truetype"), url("../fonts/BandeinsStrangeVariable.otf") format("opentype"), url("../fonts/BandeinsStrangeVariable.woff2") format("woff2");
 }
 * {
   margin: 0;
@@ -121,19 +127,45 @@ header div h2 {
   }
 }
 
-.splash--text h1 {
+#splash--text {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  top: 44%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.6s;
+  z-index: -1;
+}
+#splash--text.--game-over {
+  transition: opacity 0.8s;
+  opacity: 1;
+  z-index: 5;
+}
+#splash--text h1 {
   font-family: GarconneDisplayV;
   animation: animate-type 3s infinite alternate;
+  white-space: nowrap;
+  line-height: 1.8;
 }
-.splash--text #start {
-  background-color: #000363;
-  width: 120px;
-  height: 60px;
+@media screen and (min-device-width: 769px) {
+  #splash--text h1 {
+    font-size: 64px;
+  }
+}
+#splash--text #start {
   border-radius: 40px;
-  position: fixed;
-  right: 100px;
-  bottom: 50vh;
   color: #FFFFFF;
+  background-color: #000363;
+  height: 48px;
+  width: 120px;
+  cursor: pointer;
+}
+#splash--text #start:hover {
+  opacity: 0.8;
 }
 
 .sky {
@@ -172,14 +204,29 @@ header div h2 {
   transform: rotate(45deg);
 }
 
-.sun {
-  animation: sunshine 16s infinite;
+#sun--background {
+  top: -8vh;
+  right: -8vh;
   position: fixed;
+  transition: all 1s;
+}
+#sun--background.--game-over {
+  transition: all 3s;
+  top: 14%;
+  right: calc(50% - 30vh);
+}
+#sun--background.--game-over .sun {
+  transition: all 3s;
+  width: 60vh;
+  height: 60vh;
+  animation: none;
+}
+#sun--background .sun {
+  transition: all 1s;
   width: 20vh;
   height: 20vh;
-  right: -8vh;
-  top: -8vh;
   background: radial-gradient(50% 50% at 50% 50%, #f26e0e 0%, rgba(196, 196, 196, 0) 100%);
+  animation: sunshine 16s infinite;
 }
 
 .moon {
@@ -188,10 +235,15 @@ header div h2 {
   position: fixed;
   top: 40vh;
   background-color: #111111;
-  left: 50%;
-  transform: translateX(-50%);
+  left: calc(50% - 100vh);
   border-radius: 100%;
-  position: fixed;
+  transition: transform 1.2s, left 0.8s;
+}
+.moon.--game-over {
+  left: calc(100vw - (100vh * 1.1));
+  top: 36vh;
+  transform: rotate(8deg) scale(0.9);
+  transition: transform 4s, left 2s;
 }
 .moon__shine {
   background: radial-gradient(50% 50% at 50% 50%, #0007E4 3.55%, rgba(0, 7, 228, 0) 100%);
@@ -207,6 +259,7 @@ header div h2 {
   position: absolute;
   opacity: 0.3;
   transition: opacity 0.2s;
+  cursor: pointer;
 }
 .moon__alien--active {
   opacity: 1;

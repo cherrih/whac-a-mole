@@ -1,11 +1,9 @@
 @keyframes animate-type {
   0% {
-    font-variation-settings: "wght" 400;
-    letter-spacing: 0;
+    font-variation-settings: "wght" 300;
   }
   100% {
-    font-variation-settings:"wght" 900;
-    letter-spacing: 2%;
+    font-variation-settings: "wght" 800;
   }
 }
 
@@ -30,18 +28,25 @@
   }
 }
 
-@keyframes sunshine {
+@keyframes sunrise {
   0% {
-    width: 20vh;
-    height: 20vh;
-  }
-  50% {
-      width: 24vh;
-      height: 24vh;
+    top: -8vh;
   }
   100% {
-      width: 20vh;
-      height: 20vh;
+    left: 50%;
+    transform: translate(-50%, 28vh);
+  }
+}
+
+@keyframes sunshine {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 

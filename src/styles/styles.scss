@@ -49,20 +49,52 @@ header {
   }
 }
 
-.splash--text {
+#splash--text {
+  position: fixed;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  left: 50%;
+  top: 44%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.6s;
+
+  z-index: -1;
+
+  &.--game-over {
+    transition: opacity 0.8s;
+    opacity: 1;
+    z-index: 5;
+  }
+
   h1 {
     font-family: GarconneDisplayV;
     animation: animate-type 3s infinite alternate;
+    white-space: nowrap;
+    line-height: 1.8;
+    @media screen and (min-device-width: $medium) {
+      font-size: 64px;
+    }
   }
+
   #start {
-    background-color: $color--main-blue;
-    width: 120px;
-    height: 60px;
     border-radius: 40px;
-    position: fixed;
-    right: 100px;
-    bottom: 50vh;
+
     color: $color--light;
+    background-color: $color--main-blue;
+
+    height: 48px;
+    width: 120px;
+
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 
@@ -104,18 +136,34 @@ header {
   transform: rotate(45deg);
 }
 
-.sun {
-  animation: sunshine 16s infinite;
-  position: fixed;
-  width: 20vh;
-  height: 20vh;
-  right: -8vh;
+#sun--background {
   top: -8vh;
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    #f26e0e 0%,
-    rgba(196, 196, 196, 0) 100%
-  );
+  right: -8vh;
+  position: fixed;
+  transition: all 1s;
+
+  &.--game-over {
+    transition: all 3s;
+    top: 14%;
+    right: calc(50% - 30vh);
+    .sun {
+      transition: all 3s;
+      width: 60vh;
+      height: 60vh;
+      animation: none;
+    }
+  }
+  .sun {
+    transition: all 1s;
+    width: 20vh;
+    height: 20vh;
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      #f26e0e 0%,
+      rgba(196, 196, 196, 0) 100%
+    );
+    animation: sunshine 16s infinite;
+  }
 }
 
 .moon {
@@ -124,10 +172,16 @@ header {
   position: fixed;
   top: 40vh;
   background-color: $color--dark;
-  left: 50%;
-  transform: translateX(-50%);
+  left: calc(50% - 100vh);
   border-radius: 100%;
-  position: fixed;
+  transition: transform 1.2s, left 0.8s;
+
+  &.--game-over {
+    left: calc(100vw - (100vh * 1.1));
+    top: 36vh;
+    transform: rotate(8deg) scale(0.9);
+    transition: transform 4s, left 2s;
+  }
 
   &__shine {
     background: radial-gradient(50% 50% at 50% 50%, #0007E4 3.55%, rgba(0, 7, 228, 0) 100%);
@@ -144,6 +198,7 @@ header {
     position: absolute;
     opacity: 0.3;
     transition: opacity 0.2s;
+    cursor: pointer;
 
     &--active {
       opacity: 1;

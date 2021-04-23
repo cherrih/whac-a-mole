@@ -1,7 +1,12 @@
 @font-face {
   font-family: "GarconneDisplayV";
-  src: url("/fonts/GarconneDisplayVariable.ttf") format("truetype"),
-      url("/fonts/GarconneDisplayExtraGras.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
+  src: url("../fonts/GarconneDisplayVariable.ttf") format("truetype"),
+      url("../fonts/GarconneDisplayExtraGras.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "BandeinsStrangeV";
+  src: url("../fonts/BandeinsStrangeVariable.ttf") format("truetype"),
+      url("../fonts/BandeinsStrangeVariable.otf") format("opentype"),
+      url("../fonts/BandeinsStrangeVariable.woff2") format("woff2");
 }

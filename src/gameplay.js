@@ -1,10 +1,13 @@
-const startButton = document.getElementById("start");
-const highScoreCont = document.getElementById("high-score");
-const highScoreText = highScoreCont.querySelector("h2");
-const scoreCont = document.getElementById("score");
-const scoreText = scoreCont.querySelector("h2");
 const countdownCont = document.getElementById("countdown");
 const countdownText = countdownCont.querySelector("h2");
+const highScoreCont = document.getElementById("high-score");
+const highScoreText = highScoreCont.querySelector("h2");
+const moon = document.getElementById("moon--background");
+const scoreCont = document.getElementById("score");
+const scoreText = scoreCont.querySelector("h2");
+const splashTextCont = document.getElementById("splash--text");
+const startButton = document.getElementById("start");
+const sun = document.getElementById("sun--background");
 
 const getAliens = () => (
   window.innerWidth > window.innerHeight
@@ -40,15 +43,17 @@ const activeTimes = [
     activeMin: 2000
   },
 ];
+const activeClass = "moon__alien--active";
+const visibleClass = "header__block--visible";
+const gameOverClass = "--game-over";
+const gameLength = 30;
 
 let isGameOver = true;
 let currentActive;
-let timeRemaining = 30;
+let timeRemaining = gameLength;
 let score = 0;
 let highScore = 0;
 
-const activeClass = "moon__alien--active";
-const visibleClass = "header__block--visible";
 
 const handleGameOver = () => {
   if (score > highScore) {
@@ -60,6 +65,7 @@ const handleGameOver = () => {
   }
   scoreCont.classList.remove(visibleClass);
   countdownCont.classList.remove(visibleClass);
+  launchGameOverScreen();
 }
 
 const getRandomAlien = () => {
@@ -99,13 +105,21 @@ const updateTimer = () => {
 const startGame = () => {
   score = 0;
   scoreText.innerText = score;
-  timeRemaining = 30;
+  timeRemaining = gameLength;
   countdownText.innerText = timeRemaining;
   isGameOver = false;
+
   scoreCont.classList.add(visibleClass);
   countdownCont.classList.add(visibleClass);
-  activateAlien();
-  updateTimer();
+
+  sun.classList.remove(gameOverClass);
+  moon.classList.remove(gameOverClass);
+  splashTextCont.classList.remove(gameOverClass);
+
+  setTimeout(() => {
+    activateAlien();
+    updateTimer();
+  }, 1200);
 }
 
 aliens.forEach((alien) => {
@@ -122,3 +136,11 @@ startButton.addEventListener("click", startGame);
 window.addEventListener("resize", () => {
   aliens = getAliens();
 });
+
+const launchGameOverScreen = () => {
+  sun.classList.add(gameOverClass);
+  moon.classList.add(gameOverClass);
+  splashTextCont.classList.add(gameOverClass);
+}
+
+launchGameOverScreen();
