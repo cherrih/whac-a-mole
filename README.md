@@ -12,6 +12,11 @@ Built in vanilla javascript, html and scss. Sass was compiled using the [sass ex
 ```
 sass --watch src/styles/styles.scss dist/css/output.css
 ```
+
+## Running locally
+
+1. Clone this repository
+2. Open [index.html](/index.html) in your browser of choice
 ## Structure
 
 All javascript and pre-compiled sass lives in the [src](/src/) directory.
